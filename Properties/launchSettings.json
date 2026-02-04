@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "FluentUITest (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "FluentUITest (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

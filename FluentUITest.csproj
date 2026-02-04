@@ -1,0 +1,84 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<!-- ================= CORE SETTINGS ================= -->
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+
+		<TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
+		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion>10.0.22621.0</SupportedOSPlatformVersion>
+
+		<RootNamespace>FluentUITest</RootNamespace>
+		<UseWinUI>true</UseWinUI>
+
+		<!-- 🔑 THIS WAS MISSING -->
+		<WindowsPackageType>MSIX</WindowsPackageType>
+
+		<EnableMsixTooling>true</EnableMsixTooling>
+		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
+
+		<Platforms>x86;x64;ARM64</Platforms>
+		<RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<!-- ================= XAML HANDLING ================= -->
+	<PropertyGroup>
+		<EnableDefaultPageItems>false</EnableDefaultPageItems>
+	</PropertyGroup>
+
+	<!-- ================= XAML PAGES ================= -->
+	<ItemGroup>
+		<Page Include="MainWindow.xaml" />
+		<Page Include="MainPage.xaml" />
+		<Page Include="BrowseMaterials.xaml" />
+		<Page Include="BrowseImages.xaml" />
+		<Page Include="DownloadContent.xaml" />
+		<Page Include="SettingsPage.xaml" />
+	</ItemGroup>
+
+	<!-- ================= MSIX MANIFEST ================= -->
+	<ItemGroup>
+		<AppxManifest Include="Package.appxmanifest" />
+	</ItemGroup>
+
+	<!-- ================= ASSETS ================= -->
+	<ItemGroup>
+		<Content Include="Assets\SplashScreen.scale-200.png" />
+		<Content Include="Assets\LockScreenLogo.scale-200.png" />
+		<Content Include="Assets\Square150x150Logo.scale-200.png" />
+		<Content Include="Assets\Square44x44Logo.scale-200.png" />
+		<Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+		<Content Include="Assets\Wide310x150Logo.scale-200.png" />
+
+		<Content Include="Assets\MainBG.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Assets\MainBGFaded.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<!-- ================= MSIX CAPABILITY ================= -->
+	<ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+		<ProjectCapability Include="Msix" />
+	</ItemGroup>
+
+	<!-- ================= NUGET ================= -->
+	<ItemGroup>
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250606001" />
+		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.4654" />
+	</ItemGroup>
+
+	<!-- ================= PUBLISH ================= -->
+	<PropertyGroup>
+		<GenerateAppInstallerFile>True</GenerateAppInstallerFile>
+		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+		<AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+		<AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+		<GenerateTestArtifacts>True</GenerateTestArtifacts>
+		<AppxBundle>Never</AppxBundle>
+	</PropertyGroup>
+
+</Project>

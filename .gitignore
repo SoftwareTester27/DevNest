@@ -6,3 +6,4 @@ obj/
 # User-specific
 *.user
 *.suo
+*.pfx

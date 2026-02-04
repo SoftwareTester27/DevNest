@@ -1,0 +1,10 @@
+<Page
+    x:Class="FluentUITest.DownloadContent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:FluentUITest">
+
+    <StackPanel>
+        <TextBlock Text="Download Content" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="45" FontWeight="Bold" Margin="40,40,40,40" />
+    </StackPanel>
+</Page>

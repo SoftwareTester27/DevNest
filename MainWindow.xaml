@@ -1,0 +1,77 @@
+<winui:Window
+    x:Class="FluentUITest.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:winui="using:Microsoft.UI.Xaml"
+    Title="DevNest">
+
+	<!-- SYSTEM BACKDROP -->
+	<winui:Window.SystemBackdrop>
+		<MicaBackdrop />
+	</winui:Window.SystemBackdrop>
+
+	<Grid x:Name="RootGrid">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="48"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<!-- ================= CUSTOM TITLEBAR ================= -->
+		<Grid Grid.Row="0"
+              Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="48"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<!-- APP ICON -->
+			<Image Grid.Column="0"
+                   Width="32" Height="32"
+                   Margin="8"
+                   Source="Assets/Square44x44Logo.scale-200.png"/>
+
+			<!-- DRAG REGION -->
+			<TextBlock Grid.Column="1"
+                       Text="DevNest"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       x:Name="CustomDragRegion"/>
+		</Grid>
+
+		<!-- ================= CONTENT ================= -->
+		<Grid Grid.Row="1">
+			<muxc:NavigationView
+                x:Name="nvSample"
+                PaneDisplayMode="Top"
+                IsBackButtonVisible="Collapsed"
+                SelectionChanged="NvSample_SelectionChanged"
+                Background="Transparent"
+                IsSettingsVisible="True">
+
+				<muxc:NavigationView.MenuItems>
+					<muxc:NavigationViewItem Icon="Home" Tag="MainPage" x:Name="HomeItem" IsSelected="True"/>
+					<muxc:NavigationViewItem Icon="Globe" Tag="BrowseMaterials"/>
+					<muxc:NavigationViewItem Icon="Pictures" Tag="BrowseImages"/>
+					<muxc:NavigationViewItem Icon="Download" Tag="DownloadContent"/>
+				</muxc:NavigationView.MenuItems>
+
+				<muxc:NavigationView.Content>
+					<Grid>
+						<!-- WALLPAPER -->
+						<Rectangle x:Name="WallpaperRect">
+							<Rectangle.Fill>
+								<ImageBrush Stretch="UniformToFill"/>
+							</Rectangle.Fill>
+						</Rectangle>
+
+						<!-- PAGE FRAME -->
+						<Frame x:Name="contentFrame" Background="Transparent"/>
+					</Grid>
+				</muxc:NavigationView.Content>
+
+			</muxc:NavigationView>
+		</Grid>
+	</Grid>
+</winui:Window>
