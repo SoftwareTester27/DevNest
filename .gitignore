@@ -1,0 +1,8 @@
+# Visual Studio / WinUI
+.vs/
+bin/
+obj/
+
+# User-specific
+*.user
+*.suo
